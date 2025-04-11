@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pelacak Bug Sistem Hape</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    h1 {
+      color: #333;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input, textarea, button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .bug {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pelacak Bug Sistem Hape</h1>
+
+  <form id="bugForm">
+    <input type="text" id="device" placeholder="Tipe Hape (misal: Samsung A12)" required>
+    <textarea id="bugDesc" placeholder="Deskripsi Bug..." required></textarea>
+    <button type="submit">Laporkan Bug</button>
+  </form>
+
+  <div id="bugList"></div>
+
+  <script>
+    const form = document.getElementById('bugForm');
+    const bugList = document.getElementById('bugList');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const device = document.getElementById('device').value;
+      const desc = document.getElementById('bugDesc').value;
+
+      const bugItem = document.createElement('div');
+      bugItem.className = 'bug';
+      bugItem.innerHTML = `<strong>Hape:</strong> ${device}<br><strong>Deskripsi:</strong> ${desc}`;
+
+      bugList.appendChild(bugItem);
+
+      // Reset form
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
